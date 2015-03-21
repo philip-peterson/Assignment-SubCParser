@@ -150,6 +150,24 @@ static bool skip_comment() {
    }
    return wasComment;
 }
+static bool skip_comment2() {
+   whites();
+   bool wasComment = false;
+   if (peek(1)[0] == '#') {
+      wasComment = true;
+      consume(1);
+      while(true) {
+         char p = peek(1)[0];
+         if (p == '\n') {
+            break;
+         }
+         else {
+            consume(1);
+         }
+      }
+   }
+   return wasComment;
+}
 
 static Token consume_char() {
    rexpect("'");
@@ -197,7 +215,7 @@ Token consume_token(string tokname) {
 
 string figure_token() {
    whites();
-   while (skip_comment()) {}
+   while ( skip_comment() || skip_comment2() ) {}
 
    if (patterns_dirty) {
       std::sort(patterns.begin(), patterns.end(), compareViaLength);
