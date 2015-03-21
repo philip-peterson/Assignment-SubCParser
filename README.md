@@ -4,6 +4,7 @@ Background
 This was an assignment I completed for Programming Language Concepts class.
 The goal of the assignment was to implement a recursive descent parser for
 a fictional programming language called SubC, which is somewhat similar to C.
+The output of the program is an abstract syntax tree (AST) for the input program.
 
 The grammar which we were given can be found in `specs/project_grammar.txt`.
 Sample programs can be found in `tiny_test_programs`
